@@ -248,3 +248,14 @@ footer{
 html {
   scroll-padding-top: 90px; /* adjust if header height differs */
 }
+
+/* ===== Smart Navbar Visibility ===== */
+header {
+  transition: top 0.4s ease, opacity 0.3s ease;
+}
+
+header.hidden {
+  top: -80px; /* adjust to your navbar height */
+  opacity: 0;
+  pointer-events: none;
+}
