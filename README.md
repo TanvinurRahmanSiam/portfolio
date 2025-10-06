@@ -1,62 +1,56 @@
 # Tanvinur Rahman Siam – Portfolio
 
-Welcome to my professional portfolio website! This site showcases my biography, education, experience, research, projects, honors, and contact information in a modern, elegant, and responsive design.
-
-## Features
-
-- **Modern Dark Blue Theme:** Elegant, accessible, and visually appealing.
-- **Responsive Design:** Fully mobile-friendly and adapts to all screen sizes.
-- **Smooth Animations:** Fade-in effects and smooth scrolling for a polished user experience.
-- **Typing Animation:** My professional title is animated in the header.
-- **Back-to-Top Button:** Easily navigate to the top of the page.
-- **Contact Form:** Securely send messages to my email using Formspree.
-- **Social Links:** Quick access to my GitHub, LinkedIn, Google Scholar, and YouTube profiles.
-
-## Sections
-
-- **Biography**
-- **Education**
-- **Experience**
-- **Research**
-- **Projects**
-- **Honors**
-- **Contact**
-
-## Live Demo
-
-You can view the live site at: [https://tanvinurrahmansiam.github.io/portfolio/](https://tanvinurrahmansiam.github.io/portfolio/)
-
-## Deployment (GitHub Pages)
-
-1. **Push your code to the `main` branch** of your repository.
-2. Go to your repository settings on GitHub.
-3. Under **Pages**, set the source to the `main` branch and the root (`/`).
-4. Your site will be available at `https://<your-username>.github.io/portfolio/`.
-
-### Base Path
-
-The `<base href="/portfolio/">` tag in `index.html` ensures all assets and links work correctly on GitHub Pages. If you deploy to a different repository name, update the `href` accordingly.
-
-## Customization
-
-- **Contact Form:**
-	- Replace `your-form-id` in the contact form's `action` attribute in `index.html` with your Formspree form ID.
-- **Social Links:**
-	- Update the LinkedIn, Google Scholar, and YouTube URLs in the footer with your actual profile links.
-- **Content:**
-	- Fill in your real biography, education, experience, research, projects, and honors in `index.html`.
-
-## Technologies Used
-
-- HTML5
-- CSS3 (custom properties, flexbox, media queries)
-- JavaScript (vanilla, no frameworks)
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
+Welcome to the official portfolio website of **Tanvinur Rahman Siam**, Lecturer and AI/ML Researcher.  
+This site highlights my academic background, research contributions, publications, teaching experience, and contact information in a clean, interactive, and modern dark-blue themed interface.
 
 ---
 
-© 2025 Tanvinur Rahman Siam. All rights reserved.
-# portfolio
+## Features
+
+- **Modern Dark Blue Theme** – Elegant, professional, and accessible design.  
+- **Fully Responsive** – Adapts seamlessly to desktop, tablet, and mobile screens.  
+- **Smooth Animations** – Subtle fade-in effects and section transitions.  
+- **Dynamic Typing Effect** – Animated professional titles in the header.  
+- **Smart Invisible Navbar** – Header hides automatically and appears when the cursor moves to the top.  
+- **Back-to-Top Button** – Quickly return to the top of the page.  
+- **Functional Contact Form** – Messages are sent directly to my Gmail via Formspree.  
+- **Integrated Social Links** – Direct access to my LinkedIn, GitHub, ORCID, Google Scholar, and Website.  
+
+---
+
+## Sections Overview
+
+| Section | Description |
+|----------|-------------|
+| **Biography** | Overview of my academic and research identity. |
+| **Education** | Academic qualifications (BRAC University, CUET). |
+| **Teaching** | Courses I teach such as Algorithm, Compiler, and Computer Architecture. |
+| **Research Interests** | AI, Machine Learning, Computer Vision, Biomedical Informatics, HCI, Big Data Analytics. |
+| **Publications** | Indexed research papers from IEEE, Springer, and others (linked with DOIs). |
+| **Projects** | Selected academic and research projects. |
+| **Honors** | Awards and recognitions including Best Paper Award. |
+| **Contact** | Direct contact form and links to professional profiles. |
+
+---
+
+## Live Demo
+
+You can visit the live portfolio at:  
+[https://tanvinurrahmansiam.github.io/portfolio/](https://tanvinurrahmansiam.github.io/portfolio/)
+
+---
+
+## Deployment (GitHub Pages)
+
+1. Push your code to the `main` branch.  
+2. Go to your repository **Settings → Pages**.  
+3. Set the source to the `main` branch and the root (`/`).  
+4. Your site will be available at:  
+   `https://<your-username>.github.io/portfolio/`
+
+### Base Path Note
+
+If your repository name differs from `portfolio`, update this line inside `index.html`:
+
+```html
+<base href="/portfolio/">
