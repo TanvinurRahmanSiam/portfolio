@@ -103,20 +103,21 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   /* =====================
      Fade-In Animation on Scroll
   ====================== */
-  const fadeEls = document.querySelectorAll(".fade-in");
-  const fadeInOnScroll = () => {
-    const triggerBottom = window.innerHeight * 0.9;
-    fadeEls.forEach((el) => {
-      const boxTop = el.getBoundingClientRect().top;
-      if (boxTop < triggerBottom) {
-        el.classList.add("animated");
-        el.style.opacity = 1;
-        el.style.transform = "none";
-      }
-    });
-  };
-  window.addEventListener("scroll", fadeInOnScroll);
-  fadeInOnScroll();
+const fadeEls = document.querySelectorAll(".fade-in");
+const fadeInOnScroll = () => {
+  const triggerBottom = window.innerHeight * 0.9;
+  fadeEls.forEach((el) => {
+    const boxTop = el.getBoundingClientRect().top;
+    if (boxTop < triggerBottom) {
+      el.classList.add("animated");
+      el.style.opacity = 1;
+      el.style.transform = "none";
+    }
+  });
+};
+window.addEventListener("scroll", fadeInOnScroll);
+fadeInOnScroll();
+
 
   /* =====================
      Back to Top Button
