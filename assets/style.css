@@ -243,3 +243,8 @@ footer{
   .contact-btn{font-size:.95rem;padding:.6rem .8rem}
   .footer-icons{gap:.7rem}
 }
+
+/* Prevent sections from being hidden under fixed header */
+html {
+  scroll-padding-top: 90px; /* adjust if header height differs */
+}
