@@ -73,19 +73,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   if (typedTitle) typeTitle();
 
-  /* =====================
-     Smooth Scrolling for internal links
   ====================== */
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", (e) => {
-      const targetId = anchor.getAttribute("href").slice(1);
-      const target = document.getElementById(targetId);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: "smooth" });
-      }
-    });
+// Smooth scrolling for internal links with header offset
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", (e) => {
+    const targetId = anchor.getAttribute("href").slice(1);
+    const target = document.getElementById(targetId);
+    if (target) {
+      e.preventDefault();
+      const yOffset = -80; // height of your fixed header
+      const y = target.getBoundingClientRect().top + window.scrollY + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
   });
+});
+
 
   /* =====================
      Responsive Navigation Toggle
