@@ -73,21 +73,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   if (typedTitle) typeTitle();
 
+  /* =====================
+     Smooth scrolling for internal links with header offset
   ====================== */
-// Smooth scrolling for internal links with header offset
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", (e) => {
-    const targetId = anchor.getAttribute("href").slice(1);
-    const target = document.getElementById(targetId);
-    if (target) {
-      e.preventDefault();
-      const yOffset = -80; // height of your fixed header
-      const y = target.getBoundingClientRect().top + window.scrollY + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      const targetId = anchor.getAttribute("href").slice(1);
+      const target = document.getElementById(targetId);
+      if (target) {
+        e.preventDefault();
+        const yOffset = -80; // offset for hidden header
+        const y = target.getBoundingClientRect().top + window.scrollY + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    });
   });
-});
-
 
   /* =====================
      Responsive Navigation Toggle
@@ -103,21 +103,20 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   /* =====================
      Fade-In Animation on Scroll
   ====================== */
-const fadeEls = document.querySelectorAll(".fade-in");
-const fadeInOnScroll = () => {
-  const triggerBottom = window.innerHeight * 0.9;
-  fadeEls.forEach((el) => {
-    const boxTop = el.getBoundingClientRect().top;
-    if (boxTop < triggerBottom) {
-      el.classList.add("animated");
-      el.style.opacity = 1;
-      el.style.transform = "none";
-    }
-  });
-};
-window.addEventListener("scroll", fadeInOnScroll);
-fadeInOnScroll();
-
+  const fadeEls = document.querySelectorAll(".fade-in");
+  const fadeInOnScroll = () => {
+    const triggerBottom = window.innerHeight * 0.9;
+    fadeEls.forEach((el) => {
+      const boxTop = el.getBoundingClientRect().top;
+      if (boxTop < triggerBottom) {
+        el.classList.add("animated");
+        el.style.opacity = 1;
+        el.style.transform = "none";
+      }
+    });
+  };
+  window.addEventListener("scroll", fadeInOnScroll);
+  fadeInOnScroll();
 
   /* =====================
      Back to Top Button
