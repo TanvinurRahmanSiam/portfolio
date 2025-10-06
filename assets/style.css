@@ -12,10 +12,15 @@
   --radius:18px;
   --transition:.35s cubic-bezier(.4,0,.2,1);
   --spacing:2.5rem;
+
+  /* header height used for smart navbar + scroll offset */
+  --header-h:80px;
 }
 
+/* smooth scroll + make anchors stop below fixed header */
+html{scroll-behavior:smooth; scroll-padding-top: var(--header-h);}
+
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
 body{
   background:var(--bg);
   color:var(--text);
@@ -25,11 +30,12 @@ body{
   letter-spacing:.01em;
 }
 
-/* Generic anchor + button helpers used across sections */
+/* =========================
+   LINKS & BUTTONS
+   ========================= */
 a{color:var(--accent);text-decoration:none;transition:color .2s ease}
 a:hover,a:focus{color:var(--accent-hover);outline:none}
 
-/* Reusable button style (used by CV / Scholar links etc.) */
 .btn{
   display:inline-block;
   background:linear-gradient(90deg,var(--accent),var(--accent-hover));
@@ -47,23 +53,38 @@ a:hover,a:focus{color:var(--accent-hover);outline:none}
 }
 
 /* =========================
-   HEADER / NAV
+   SMART INVISIBLE NAVBAR
+   (replaces any sticky header)
    ========================= */
 header{
-  background:var(--bg-alt);
-  box-shadow:0 2px 16px var(--shadow);
-  position:sticky;top:0;z-index:100;
+  position:fixed;
+  top: calc(-1 * var(--header-h)); /* hidden by default */
+  left:0; width:100%;
+  height: var(--header-h);
+  background: rgba(20,33,61,.95);
   border-bottom:1.5px solid var(--accent);
+  box-shadow:0 2px 16px var(--shadow);
+  transition: top .5s ease, opacity .4s ease;
+  z-index:1000;
+  opacity:0;
+  backdrop-filter: blur(8px);
 }
+header.visible{
+  top:0;
+  opacity:1;
+}
+
 .navbar{
   display:flex;align-items:center;justify-content:space-between;
   max-width:1100px;margin:0 auto;padding:1.2rem 2.5rem;gap:1.5rem;
+  height:100%;
 }
 .logo{
   font-size:1.7rem;font-weight:700;color:var(--accent);
   letter-spacing:2px;text-shadow:0 2px 8px var(--shadow);
   transition:color var(--transition);
 }
+
 .typed-title-container{
   margin:.2em 0;min-height:1.7em;font-size:1.08rem;
   color:var(--accent-hover);font-family:'Fira Mono','Consolas',monospace;
@@ -79,7 +100,10 @@ header{
   padding:.3em .7em;border-radius:6px;
   transition:color var(--transition),background var(--transition)
 }
-.nav-links li a:hover,.nav-links li a:focus{color:var(--accent);background:rgba(62,198,255,.08)}
+.nav-links li a:hover,.nav-links li a:focus{
+  color:var(--accent);
+  background:rgba(62,198,255,.08)
+}
 
 .nav-toggle{display:none;flex-direction:column;cursor:pointer;gap:5px}
 .nav-toggle span{width:25px;height:3px;background:var(--accent);border-radius:2px;transition:var(--transition)}
@@ -87,7 +111,7 @@ header{
 /* =========================
    LAYOUT / SECTIONS
    ========================= */
-main{max-width:900px;margin:var(--spacing) auto;padding:0 1.2rem}
+main{max-width:900px;margin:calc(var(--spacing) + var(--header-h)) auto var(--spacing);padding:0 1.2rem}
 .section{
   background:var(--section);
   border-radius:var(--radius);
@@ -107,18 +131,15 @@ main{max-width:900px;margin:var(--spacing) auto;padding:0 1.2rem}
 }
 .section ul{margin-left:1.5rem;margin-top:.7rem;margin-bottom:.7rem;line-height:1.8}
 
-/* Used in Biography list of links */
+/* biography links list */
 .links{list-style:none;margin-top:1rem}
 .links li{margin:.35rem 0}
 
-/* Two-column list for Research Interests */
-.two-col{
-  list-style:disc inside;
-  columns:2;column-gap:2rem;
-}
+/* research interests two-column */
+.two-col{list-style:disc inside; columns:2; column-gap:2rem}
 @media (max-width:700px){.two-col{columns:1}}
 
-/* Publications list (from index.html #publications) */
+/* publications */
 .pub-list{list-style:none;padding:0}
 .pub-list li{
   border-left:3px solid var(--accent);
@@ -126,7 +147,7 @@ main{max-width:900px;margin:var(--spacing) auto;padding:0 1.2rem}
 }
 .pub-list em{color:#9ccfd8;font-style:italic}
 
-/* Grid/Card for Projects */
+/* projects grid/cards */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -158,7 +179,7 @@ main{max-width:900px;margin:var(--spacing) auto;padding:0 1.2rem}
 .contact-form button[type="submit"]{margin-top:.5rem;align-self:flex-start}
 #form-status{margin-top:.7rem;font-size:1rem;color:var(--accent-hover);min-height:1.2em}
 
-/* Contact buttons under the form */
+/* contact quick links */
 .contact-links{display:flex;gap:1.2rem;margin-top:1.2rem;flex-wrap:wrap}
 .contact-btn{
   background:linear-gradient(90deg,var(--accent),var(--accent-hover));
@@ -181,8 +202,6 @@ footer{
   font-size:1.05rem;background:var(--bg-alt);
   border-top:1.5px solid var(--accent);margin-top:var(--spacing);letter-spacing:1px;
 }
-
-/* Footer Social Icons (SVG or text fallback) */
 .footer-icons{
   display:flex;justify-content:center;gap:1.3rem;margin-bottom:.7rem;flex-wrap:wrap
 }
@@ -200,12 +219,12 @@ footer{
 }
 
 /* =========================
-   UTILITIES / EFFECTS
+   EFFECTS
    ========================= */
 .fade-in{opacity:0;transform:translateY(40px);animation:fadeInUp 1s cubic-bezier(.4,0,.2,1) forwards}
 @keyframes fadeInUp{to{opacity:1;transform:none}}
 
-/* Back to top */
+/* back to top */
 #back-to-top{
   position:fixed;bottom:2.2rem;right:2.2rem;z-index:200;
   background:linear-gradient(90deg,var(--accent),var(--accent-hover));
@@ -242,24 +261,4 @@ footer{
   .typed-title-container{font-size:.85rem}
   .contact-btn{font-size:.95rem;padding:.6rem .8rem}
   .footer-icons{gap:.7rem}
-}
-
-
-/* ===== Smart Invisible Navbar ===== */
-header {
-  position: fixed;
-  top: -80px; /* hidden by default */
-  left: 0;
-  width: 100%;
-  background: rgba(20, 33, 61, 0.95);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-  border-bottom: 1px solid var(--accent);
-  transition: top 0.5s ease, opacity 0.4s ease;
-  z-index: 999;
-  opacity: 0;
-}
-
-header.visible {
-  top: 0;
-  opacity: 1;
 }
