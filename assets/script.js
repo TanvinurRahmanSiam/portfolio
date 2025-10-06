@@ -135,24 +135,18 @@ fadeInOnScroll();
   }
 });
 
-/* Smart Navbar: hide on scroll down, show near top or when mouse at top */
+/* =====================
+   Navbar shows only when cursor near top
+===================== */
 const header = document.querySelector("header");
-let lastScroll = 0;
-
-document.addEventListener("scroll", () => {
-  const currentScroll = window.scrollY;
-  if (currentScroll > lastScroll && currentScroll > 150) {
-    header.classList.add("hidden");
-  } else {
-    header.classList.remove("hidden");
-  }
-  lastScroll = currentScroll;
-});
+let isVisible = false;
 
 document.addEventListener("mousemove", (e) => {
-  if (e.clientY <= 100) {
-    header.classList.remove("hidden");
+  if (e.clientY <= 100 && !isVisible) {
+    header.classList.add("visible");
+    isVisible = true;
+  } else if (e.clientY > 100 && isVisible) {
+    header.classList.remove("visible");
+    isVisible = false;
   }
 });
-
-
