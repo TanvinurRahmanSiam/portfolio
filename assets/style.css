@@ -244,18 +244,22 @@ footer{
   .footer-icons{gap:.7rem}
 }
 
-/* Prevent sections from being hidden under fixed header */
-html {
-  scroll-padding-top: 90px; /* adjust if header height differs */
-}
 
-/* ===== Smart Navbar Visibility ===== */
+/* ===== Smart Invisible Navbar ===== */
 header {
-  transition: top 0.4s ease, opacity 0.3s ease;
+  position: fixed;
+  top: -80px; /* hidden by default */
+  left: 0;
+  width: 100%;
+  background: rgba(20, 33, 61, 0.95);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid var(--accent);
+  transition: top 0.5s ease, opacity 0.4s ease;
+  z-index: 999;
+  opacity: 0;
 }
 
-header.hidden {
-  top: -80px; /* adjust to your navbar height */
-  opacity: 0;
-  pointer-events: none;
+header.visible {
+  top: 0;
+  opacity: 1;
 }
